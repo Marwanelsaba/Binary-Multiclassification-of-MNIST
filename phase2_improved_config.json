@@ -1,0 +1,16 @@
+{
+  "phase": 2,
+  "phase2_feature": "pca",
+  "pca_components": 60,
+  "hog_cell_size": 4,
+  "hog_block_size": 2,
+  "hog_bins": 9,
+  "val_ratio": 0.1,
+  "test_ratio": 0.2,
+  "subsample_per_class": 800,
+  "rf_n_estimators": 15,
+  "rf_max_depth": 12,
+  "random_state": 42,
+  "data_dir": "data",
+  "output_dir": "outputs"
+}

@@ -1,0 +1,17 @@
+{
+  "phase": 1,
+  "class_a": 3,
+  "class_b": 8,
+  "features": ["flatten", "pca", "hog"],
+  "models": ["logreg", "knn", "gnb"],
+  "pca_components": 50,
+  "hog_cell_size": 4,
+  "hog_block_size": 2,
+  "hog_bins": 9,
+  "val_ratio": 0.1,
+  "test_ratio": 0.2,
+  "subsample_per_class": 1000,
+  "random_state": 42,
+  "data_dir": "data",
+  "output_dir": "outputs"
+}

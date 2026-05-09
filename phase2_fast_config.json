@@ -1,0 +1,8 @@
+{
+  "phase2_feature": "pca",
+  "subsample_per_class": 40,
+  "pca_components": 30,
+  "rf_n_estimators": 5,
+  "rf_max_depth": 8,
+  "balance_train": false
+}

@@ -1,0 +1,10 @@
+{
+  "features": ["flatten", "pca", "hog"],
+  "models": ["logreg", "knn", "gnb"],
+  "subsample_per_class": 300,
+  "pca_components": 40,
+  "hog_cell_size": 4,
+  "hog_block_size": 2,
+  "hog_bins": 9,
+  "balance_train": false
+}
