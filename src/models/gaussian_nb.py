@@ -3,11 +3,8 @@
 The statistical formulas are implemented directly without any ML library.
 """
 from __future__ import annotations
-
 import math
-
 import numpy as np
-
 
 class GaussianNaiveBayes:
     def __init__(self, var_smoothing: float = 1e-9) -> None:
