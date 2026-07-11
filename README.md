@@ -1,515 +1,623 @@
 <div align="center">
 
-# 🧠 Binary & Multiclass MNIST Classification
+<img src="assets/mnist_project_banner.svg" alt="Binary and Multiclass MNIST Classification banner" width="100%">
 
-### Manual Machine Learning Algorithms from Scratch
+<br>
 
-A complete implementation of classical Machine Learning algorithms built **from scratch**, featuring custom preprocessing, feature engineering, dimensionality reduction, evaluation pipelines, and optimized execution.
+![Python](https://img.shields.io/badge/Python-3.10%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)
+![NumPy](https://img.shields.io/badge/NumPy-Vectorized-013243?style=for-the-badge&logo=numpy&logoColor=white)
+![TensorFlow](https://img.shields.io/badge/Dataset-MNIST-FF6F00?style=for-the-badge&logo=tensorflow&logoColor=white)
+![Streamlit](https://img.shields.io/badge/Demo-Streamlit-FF4B4B?style=for-the-badge&logo=streamlit&logoColor=white)
 
-![Python](https://img.shields.io/badge/Python-3.10+-blue?style=for-the-badge&logo=python)
-![NumPy](https://img.shields.io/badge/NumPy-Vectorized-orange?style=for-the-badge&logo=numpy)
-![TensorFlow](https://img.shields.io/badge/Dataset-MNIST-red?style=for-the-badge&logo=tensorflow)
-![Status](https://img.shields.io/badge/Status-Completed-success?style=for-the-badge)
+### Classical machine-learning algorithms implemented from scratch for binary and multiclass handwritten-digit recognition
+
+[Overview](#project-overview) •
+[Two Phases](#the-two-project-phases) •
+[Algorithms](#algorithms-implemented-from-scratch) •
+[Demo](#interactive-streamlit-demo) •
+[Installation](#installation-and-setup) •
+[Configuration](#configuration-reference)
 
 </div>
 
 ---
 
-# 📖 Overview
+## Project Overview
 
-This project demonstrates how classical Machine Learning algorithms work **under the hood** by implementing them manually rather than relying on pre-built Scikit-Learn models.
+**Binary-Multiclassification-of-MNIST** is an end-to-end classical machine-learning project built to explain what happens beneath high-level ML libraries. Instead of calling ready-made classifiers, the project implements the learning algorithms, feature transformations, metrics, validation logic, and experiment orchestration manually with NumPy and standard Python.
 
-The project is divided into two main phases that progressively introduce more advanced machine learning concepts, feature engineering techniques, and optimization strategies.
+The project begins with a focused binary classification problem—distinguishing handwritten digits **3 and 8** by default—and then expands into full multiclass recognition across all MNIST digits from **0 through 9**. This progression makes the repository both a practical classifier and a structured study of how classical machine learning scales from a simple decision boundary to a significantly more complex ten-class task.
 
----
+The repository goes beyond model fitting. It includes reusable data utilities, manual feature extraction, stratified splitting, configurable experiments, hyperparameter exploration, detailed evaluation, output generation, performance optimizations, and a Streamlit interface for interactive predictions.
 
-## 🔹 Phase 1 — Binary Classification (Digits 3 vs 8)
+> [!IMPORTANT]
+> The focus of this project is educational transparency. Core models and transformations are implemented manually rather than delegated to prebuilt scikit-learn estimators.
 
-Phase 1 focuses on building a complete binary image classification pipeline using the MNIST dataset. The objective is to compare multiple machine learning algorithms implemented from scratch on a simple two-class classification problem.
+## Why This Project Matters
 
-### Features
+MNIST is often introduced through a short neural-network example, but it is also an excellent environment for understanding the foundations of machine learning. Its 28×28 grayscale images create a realistic high-dimensional problem while remaining small enough for experimentation and visualization.
 
-- Binary classification of handwritten digits **3** and **8**
-- Configurable dataset size through JSON configuration files
-- Automatic data loading and preprocessing
-- Pixel normalization and feature standardization
-- Comparison of multiple machine learning algorithms
-- Manual implementation of all learning algorithms
-- Performance visualization and evaluation
+This project explores several important questions:
 
-### Machine Learning Models
+- How does binary classification differ from multiclass classification?
+- How do raw pixels compare with PCA and HOG representations?
+- Why does normalization and standardization matter?
+- How do logistic regression, KNN, Naive Bayes, decision trees, and random forests behave on image data?
+- How can vectorization substantially improve manual algorithms?
+- How should multiclass performance be measured beyond overall accuracy?
+- How can a training pipeline be exposed through an interactive application?
 
-- Logistic Regression
-- K-Nearest Neighbors (KNN)
-- Gaussian Naive Bayes
-- Decision Tree
-- Random Forest
+## Project Highlights
 
-### Feature Engineering
+- Two progressive learning phases: binary and multiclass classification.
+- Manual implementations of classical machine-learning algorithms.
+- Three supported feature representations: Flatten, PCA, and HOG.
+- Configurable experiments through JSON files and command-line arguments.
+- Stratified training, validation, and testing splits.
+- Optional stratified subsampling for fast experiments.
+- Per-class and aggregate evaluation metrics.
+- Vectorized Logistic Regression and KNN computations.
+- PCA optimized with the dual covariance approach.
+- Streamlit demo for held-out and user-uploaded digit images.
+- Probability display for models that expose `predict_proba`.
+- Reproducible runs through configurable random seeds.
 
-- Raw Pixel Features
-- Principal Component Analysis (PCA)
+## The Two Project Phases
 
-### Evaluation
+<p align="center">
+  <img src="assets/phase_overview.svg" alt="Comparison of binary and multiclass MNIST phases" width="100%">
+</p>
 
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Confusion Matrix
-- Model comparison reports
+### Phase 1 — Binary Classification
 
----
+Phase 1 establishes the complete pipeline using two handwritten digits. The default task distinguishes digit **3** from digit **8**, although the command-line workflow and demo allow the selected pair to be changed.
 
-## 🔹 Phase 2 — Multiclass Classification (Digits 0–9)
+This phase is intentionally focused: it makes model behavior easier to inspect, reduces training time, and provides a controlled environment for comparing feature representations and classical algorithms.
 
-Phase 2 extends the project to a complete multiclass classification problem involving all ten handwritten digits. The pipeline introduces several optimization techniques to improve execution speed while maintaining manual implementations of the core algorithms.
+#### Phase 1 capabilities
 
-### Features
+- User-selectable binary digit pair.
+- Default classification task: 3 versus 8.
+- Binary label remapping for model training.
+- Flattened pixels, manual PCA, or manual HOG features.
+- Logistic Regression, KNN, and Gaussian Naive Bayes in the default configuration.
+- Configurable PCA components and HOG parameters.
+- Accuracy, precision, recall, F1 score, and confusion-matrix analysis.
+- Fast configuration using equal samples per class.
 
-- Classification of all MNIST digits (0–9)
-- Optimized machine learning pipeline
-- Manual hyperparameter tuning
-- Cross-validation for model evaluation
-- Faster execution through optimized numerical computations
-- Reduced search space for practical experimentation
+#### Default Phase 1 experiment matrix
 
-### Pipeline Improvements
+| Feature representation | Logistic Regression | KNN | Gaussian Naive Bayes |
+|---|:---:|:---:|:---:|
+| Flattened pixels | ✓ | ✓ | ✓ |
+| PCA | ✓ | ✓ | ✓ |
+| HOG | ✓ | ✓ | ✓ |
 
-#### Logistic Regression
+With three feature representations and three default models, Phase 1 supports a clear nine-experiment comparison before additional tuning.
 
-- Fully vectorized gradient descent
-- Efficient batch processing using NumPy
-- Faster convergence compared to feature-by-feature loops
+### Phase 2 — Multiclass Classification
 
-#### K-Nearest Neighbors
+Phase 2 expands the task to all ten MNIST classes. This changes the problem substantially: the classifier must now learn several decision boundaries, evaluation must consider every digit, and computational efficiency becomes far more important.
 
-- Manual Euclidean distance computation
-- Fully vectorized distance calculations
-- Faster prediction on larger datasets
+The improved workflow introduces regularization, tuning, optimized numerical operations, and a reduced search space that keeps experiments practical while preserving the from-scratch learning objective.
 
-#### Principal Component Analysis (PCA)
+#### Phase 2 capabilities
 
-- Manual implementation using the **Dual Covariance Trick**
-- Optimized specifically for high-dimensional datasets such as MNIST
-- Largest runtime improvement in the project
+- Full classification across digits 0–9.
+- Regularized multiclass Logistic Regression.
+- Tuned K-Nearest Neighbors.
+- Manual Random Forest classification.
+- PCA-focused improved configuration.
+- Manual hyperparameter exploration.
+- Cross-validation-based comparison.
+- Per-class precision, recall, and F1 scores.
+- Macro and weighted aggregate metrics.
+- Configurable sample count per class for runtime control.
 
-### Hyperparameter Optimization
+## Dataset
 
-The improved pipeline performs manual hyperparameter tuning over a reduced search space, allowing faster experimentation while maintaining competitive performance.
+The project uses the **MNIST handwritten-digit dataset**, a standard benchmark containing grayscale images of handwritten digits.
 
-### Evaluation
+| Property | Value |
+|---|---|
+| Image size | 28 × 28 pixels |
+| Channels | 1 grayscale channel |
+| Input dimensionality | 784 raw pixel features |
+| Classes | Digits 0–9 |
+| Standard training set | 60,000 images |
+| Standard test set | 10,000 images |
+| Pixel range after normalization | 0.0–1.0 |
 
-- Overall Accuracy
-- Per-Class Precision
-- Per-Class Recall
-- Per-Class F1 Score
-- Confusion Matrix
-- Cross-Validation Performance
-- Feature Comparison
+The loader supports TensorFlow/Keras as the primary MNIST source, while the experiment configuration also provides an IDX-loading option for locally stored MNIST files.
 
+### Data pipeline
 
-# ⚡ Performance Optimizations
-
-Although every algorithm remains implemented from scratch, several optimizations significantly reduce execution time.
-
-### 🚀 Logistic Regression
-
-- Fully vectorized gradient computation
-- NumPy batch operations
-- Eliminated feature-by-feature Python loops
-
-### 🚀 K-Nearest Neighbors
-
-- Manual implementation
-- Fully vectorized Euclidean distance computation
-- Faster predictions using NumPy array operations
-
-### 🚀 Principal Component Analysis (PCA)
-
-PCA is implemented manually using the **Dual Covariance Trick**, making it much more efficient for MNIST where:
-
-```text
-Number of Samples << Number of Features
+```mermaid
+flowchart LR
+    A[MNIST images] --> B[Resize to 28×28]
+    B --> C[Normalize to 0–1]
+    C --> D[Stratified sampling]
+    D --> E[Train / validation / test]
+    E --> F[Flatten, PCA, or HOG]
+    F --> G[Manual classifier]
+    G --> H[Metrics and plots]
 ```
 
-This optimization provides the largest performance improvement in the project.
+### Splitting strategy
 
-### 🚀 Hyperparameter Search
+The dataset is split using class-aware stratification so that each subset maintains an appropriate representation of every selected digit. The default proportions are:
 
-Phase 2 uses a reduced manual search grid to keep experimentation practical while maintaining strong performance.
+| Subset | Proportion | Purpose |
+|---|---:|---|
+| Training | 70% | Fit model parameters |
+| Validation | 10% | Compare settings and monitor generalization |
+| Testing | 20% | Final evaluation on unseen samples |
 
----
+## Feature Engineering
 
-# 📂 Project Structure
+Image classification performance depends heavily on how the image is represented. This project supports three different feature pipelines, allowing direct comparison between raw intensity values, compressed representations, and shape-oriented descriptors.
+
+### 1. Flattened Pixel Features
+
+Each 28×28 image is reshaped into a 784-dimensional vector. The features preserve all original pixel intensities and are standardized before training.
+
+**Advantages**
+
+- Preserves the complete input image.
+- Simple and transparent representation.
+- Useful as a baseline for all models.
+
+**Trade-offs**
+
+- High dimensionality.
+- Sensitive to small shifts in handwriting position.
+- Can make distance-based algorithms slower.
+
+### 2. Principal Component Analysis
+
+PCA reduces the 784 raw features into a smaller set of orthogonal components that preserve as much variance as possible. The implementation is manual and uses the **dual covariance trick** when appropriate, making it more efficient when the number of samples is smaller than the feature dimension.
+
+**Advantages**
+
+- Reduces memory and computation.
+- Removes redundant pixel relationships.
+- Can improve KNN and Logistic Regression runtime.
+- Provides a configurable number of components.
+
+**Trade-offs**
+
+- Components are less visually interpretable than original pixels.
+- Aggressive reduction can discard useful digit information.
+
+### 3. Histogram of Oriented Gradients
+
+HOG represents local edge direction and intensity rather than raw pixel brightness. The extractor divides the image into cells, builds orientation histograms, and normalizes neighboring blocks.
+
+The following parameters are configurable:
+
+- Cell size
+- Block size
+- Number of orientation bins
+
+HOG is particularly relevant to handwritten digits because digit identity is strongly connected to stroke direction and overall shape.
+
+## Algorithms Implemented From Scratch
+
+### Logistic Regression
+
+The Logistic Regression implementation supports binary and multiclass learning with mini-batch gradient descent. The improved version relies on vectorized NumPy operations, avoiding slow feature-by-feature Python loops.
+
+Key implementation details include:
+
+- Configurable learning rate and epoch count.
+- Mini-batch updates.
+- Cross-entropy-based optimization.
+- Binary and multiclass output handling.
+- Optional L2 regularization.
+- Configurable regularization strength.
+- Reproducible parameter initialization.
+
+### K-Nearest Neighbors
+
+KNN predicts a label by measuring the distance between an input sample and stored training samples. The implementation manually computes Euclidean distances and selects the closest neighbors.
+
+The optimized version vectorizes the distance calculation, avoiding a Python loop over every feature and substantially reducing prediction time.
+
+Key parameters include:
+
+- Number of neighbors, `k`.
+- Distance function.
+- Feature representation.
+
+### Gaussian Naive Bayes
+
+Gaussian Naive Bayes models each feature using a class-specific Gaussian distribution. It estimates the mean and variance of every feature for every class, combines those likelihoods with class priors, and selects the most probable label.
+
+Its strong assumptions make it a useful fast baseline and provide an interesting contrast with more flexible models.
+
+### Decision Tree
+
+The project model library includes a recursive Decision Tree implementation based on impurity reduction. Candidate splits are evaluated using Gini impurity and information gain, producing an interpretable hierarchy of feature decisions.
+
+### Random Forest
+
+The Random Forest implementation combines multiple manually constructed decision trees through bootstrap aggregation and random feature selection.
+
+Important controls include:
+
+- Number of estimators.
+- Maximum tree depth.
+- Minimum samples required to split.
+- Minimum samples per leaf.
+- Number of candidate thresholds.
+- Random feature selection.
+- Bootstrap sampling.
+- Reproducible random state.
+
+The final prediction is produced through majority voting across the forest.
+
+## Performance Optimizations
+
+Implementing algorithms manually makes computational bottlenecks easy to observe. The improved pipeline focuses on reducing unnecessary Python-level work while keeping the underlying algorithms transparent.
+
+### Vectorized Logistic Regression
+
+Gradient and probability calculations are performed using matrix operations. This allows NumPy's optimized numerical backend to replace repeated scalar operations.
+
+### Vectorized KNN Distances
+
+Distance calculations are expressed as array operations rather than nested loops. This is especially important because KNN performs most of its work during prediction.
+
+### Dual Covariance PCA
+
+For data with fewer samples than features, decomposing the sample-space matrix can be significantly cheaper than directly decomposing the full feature covariance matrix. This optimization produces the largest runtime improvement in the high-dimensional MNIST pipeline.
+
+### Practical Search Spaces
+
+The improved Phase 2 configuration intentionally limits the search space. This makes experimentation feasible on an ordinary laptop while still demonstrating manual model selection and hyperparameter comparison.
+
+## Evaluation Framework
+
+The project evaluates models using both aggregate and per-class metrics.
+
+| Metric | What it measures |
+|---|---|
+| Accuracy | Overall proportion of correct predictions |
+| Precision | Reliability of positive predictions for each class |
+| Recall | Proportion of each class successfully detected |
+| F1 score | Harmonic balance between precision and recall |
+| Macro F1 | Equal-weight average across all classes |
+| Weighted F1 | Class-frequency-weighted average |
+| Confusion matrix | Exact pattern of correct and incorrect classifications |
+| Cross-validation score | Stability across multiple data partitions |
+
+Macro F1 is especially useful in multiclass evaluation because it gives each digit equal importance, while weighted F1 reflects the class distribution in the evaluated set.
+
+## Interactive Streamlit Demo
+
+The repository includes a lightweight local website that exposes the manual pipeline through an interactive interface.
+
+### Demo controls
+
+- Select Phase 1 or Phase 2.
+- Choose Flatten, PCA, or HOG feature extraction.
+- Select a compatible model for the chosen phase.
+- Choose the two binary digits in Phase 1.
+- Adjust samples per class.
+- Adjust PCA component count.
+- Configure HOG cell size, block size, and orientation bins.
+- Select a reproducible random seed.
+- Train or load the selected model.
+
+### Demo outputs
+
+- Validation accuracy.
+- Test accuracy.
+- Macro F1.
+- Weighted F1.
+- Training, validation, and testing set sizes.
+- True and predicted labels for held-out MNIST examples.
+- Class probabilities when supported by the selected model.
+
+### Custom image prediction
+
+Users can upload a PNG or JPEG containing a handwritten digit. The application:
+
+1. Converts the image to grayscale.
+2. Resizes it while preserving its aspect ratio.
+3. Centers it on a 28×28 canvas.
+4. Optionally inverts its colors.
+5. Normalizes its pixels.
+6. Applies the selected feature pipeline.
+7. Predicts the digit using the trained manual classifier.
+
+<!--
+Add a Streamlit screenshot to assets/streamlit_demo.png, then remove these comment markers.
+
+<p align="center">
+  <img src="assets/streamlit_demo.png" alt="MNIST Streamlit demo interface" width="90%">
+</p>
+-->
+
+## Project Architecture
+
+```mermaid
+flowchart TD
+    CLI[main.py CLI] --> EXP[src/experiments.py]
+    APP[app.py Streamlit UI] --> DATA[src/data.py]
+    EXP --> DATA
+    DATA --> PRE[src/preprocess.py]
+    PRE --> FEAT[src/features.py]
+    FEAT --> MODELS[src/models]
+    MODELS --> METRICS[src/metrics.py]
+    METRICS --> OUT[outputs/]
+    APP --> MODELS
+```
+
+### Design principles
+
+- **Separation of concerns:** loading, preprocessing, features, models, metrics, and orchestration are separated into modules.
+- **Reusable interfaces:** models expose familiar `fit`, `predict`, and optional `predict_proba` behavior.
+- **Configuration-driven experiments:** dataset size, feature representation, model choice, and algorithm settings can be changed without rewriting the pipeline.
+- **Reproducibility:** random seeds are passed through data sampling and model training.
+- **Demo efficiency:** Streamlit caches both loaded data and trained model bundles.
+
+## Repository Structure
 
 ```text
-.
+Binary-Multiclassification-of-MNIST/
+├── assets/
+│   ├── mnist_project_banner.svg
+│   └── phase_overview.svg
 ├── src/
 │   ├── models/
 │   │   ├── logistic_regression.py
 │   │   ├── knn.py
+│   │   ├── gaussian_nb.py
 │   │   ├── decision_tree.py
-│   │   ├── random_forest.py
-│   │   └── gaussian_nb.py
-│   │
+│   │   └── random_forest.py
 │   ├── data.py
-│   ├── preprocess.py
+│   ├── experiments.py
 │   ├── features.py
 │   ├── metrics.py
+│   ├── preprocess.py
+│   ├── utils.py
 │   ├── validation.py
-│   ├── visualization.py
-│   └── experiments.py
-│
+│   └── visualization.py
 ├── outputs/
-├── main.py
 ├── app.py
+├── main.py
 ├── phase1_config.json
 ├── phase1_fast_config.json
 ├── phase2_fast_config.json
 ├── phase2_improved_config.json
-├── README.md
-└── requirements_demo.txt
+├── requirements_demo.txt
+└── README.md
 ```
 
----
+> [!NOTE]
+> Generated `__pycache__` directories and `.pyc` files should not be committed. Add them to `.gitignore` because they are machine-generated Python bytecode.
 
-# 🔬 Data Processing
+## Installation and Setup
 
-The project includes a complete preprocessing pipeline before model training.
-
-## Dataset
-
-- MNIST handwritten digit dataset
-- Loaded using TensorFlow/Keras
-- Grayscale images (28 × 28 pixels)
-- Pixel values normalized to the range **[0, 1]**
-
-## Preprocessing
-
-- Image normalization
-- Feature standardization
-- Stratified train/validation/test split
-- Optional class balancing
-- Configurable dataset size through JSON files
-
-## Feature Engineering
-
-The following feature representations are supported:
-
-| Feature | Description |
-|---------|-------------|
-| Raw Pixels | Flattened 28 × 28 images |
-| PCA | Manual dimensionality reduction |
-| HOG | Histogram of Oriented Gradients (Phase 1) |
-
-These feature representations allow comparison between different approaches for image classification.
-
-# 🤖 Machine Learning Algorithms
-
-The project implements classical Machine Learning algorithms manually rather than relying on Scikit-Learn models.
-
-## Logistic Regression
-
-- Binary and multiclass classification
-- Mini-batch gradient descent
-- Vectorized NumPy implementation
-- Cross-entropy loss
-
----
-
-## K-Nearest Neighbors (KNN)
-
-- Euclidean distance
-- Manual nearest-neighbor search
-- Hyperparameter tuning
-- Vectorized distance computation
-
----
-
-## Gaussian Naive Bayes
-
-- Gaussian probability distributions
-- Manual likelihood computation
-- Fast probabilistic baseline
-
----
-
-## Decision Tree
-
-- Recursive tree construction
-- Gini impurity
-- Information gain
-
----
-
-## Random Forest
-
-- Bootstrap aggregation (Bagging)
-- Random feature selection
-- Majority voting
-
-# 🚀 Installation
+### 1. Clone the repository
 
 ```bash
-git clone https://github.com/yourusername/Binary-Multiclassification-of-MNIST.git
-
+git clone https://github.com/Marwanwagih/Binary-Multiclassification-of-MNIST.git
 cd Binary-Multiclassification-of-MNIST
+```
 
+### 2. Create a virtual environment
+
+#### Windows PowerShell
+
+```powershell
+python -m venv .venv
+.venv\Scripts\Activate.ps1
+```
+
+#### Windows Command Prompt
+
+```bat
+python -m venv .venv
+.venv\Scripts\activate.bat
+```
+
+#### macOS or Linux
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+### 3. Install the dependencies
+
+```bash
 pip install -r requirements_demo.txt
 ```
 
----
+The demo depends on:
 
-# ▶ Running the Project
-
-## Phase 1
-
-```bash
-python main.py --phase 1 --config phase1_fast_config.json --mnist-loader tensorflow
-```
-
-This phase performs:
-
-- Dataset loading
-- Feature extraction
-- Model training
-- Performance evaluation
-- Result visualization
-
----
-
-## Phase 2 (Improved Pipeline)
-
-```bash
-python main.py --phase 2 --improved --config phase2_fast_config.json --mnist-loader tensorflow
-```
-
-Runs the optimized machine learning pipeline with faster execution and manual hyperparameter tuning.
-
----
-
-# ⚙️ Fast Configuration
-
-## Phase 1
-
-| Setting | Value |
-|---------|------:|
-| Classes | 3 & 8 |
-| Samples per Class | 300 |
-
-## Phase 2
-
-| Setting | Value |
-|---------|------:|
-| Classes | 0–9 |
-| Samples per Class | 40 |
-
----
-
-# ⚙️ Configuration
-
-The project behavior can be customized using the provided JSON configuration files.
-
-| Configuration File | Purpose |
-|-------------------|---------|
-| phase1_config.json | Default Phase 1 settings |
-| phase1_fast_config.json | Faster binary classification |
-| phase2_fast_config.json | Faster multiclass pipeline |
-| phase2_improved_config.json | Improved multiclass experiments |
-
-Configuration options include:
-
-- Selected digits
-- Samples per class
-- Learning rate
-- Batch size
-- Number of iterations
-- PCA components
-- Random seed
-
-# 📊 Experimental Results
-
-The following results summarize the performance of the implemented models on representative experimental runs.
-
-## Phase 1 — Binary Classification (Digits 3 vs 8)
-
-| Model | Feature | Test Accuracy | Macro F1 |
-|------|---------|--------------:|----------:|
-| Logistic Regression | **HOG** | **98.75%** | **98.75%** |
-| K-Nearest Neighbors | HOG | 97.75% | 97.75% |
-| Logistic Regression | Flatten | 96.75% | 96.75% |
-| Logistic Regression | PCA | 96.50% | 96.50% |
-| K-Nearest Neighbors | Flatten | 96.25% | 96.25% |
-| K-Nearest Neighbors | PCA | 95.50% | 95.50% |
-| Gaussian Naive Bayes | HOG | 93.50% | 93.49% |
-| Gaussian Naive Bayes | Flatten | 85.75% | 85.63% |
-| Gaussian Naive Bayes | PCA | 80.75% | 80.46% |
-
-### 🏆 Best Performing Configuration
-
-- **Model:** Logistic Regression
-- **Feature Extraction:** HOG
-- **Test Accuracy:** **98.75%**
-- **Macro F1-Score:** **98.75%**
-
----
-
-## Phase 2 — Multiclass Classification (Digits 0–9)
-
-| Model | Test Accuracy | Macro F1 | Best Configuration |
-|------|--------------:|---------:|-------------------|
-| **KNN (Tuned)** | **91.63%** | **91.62%** | k=5, Euclidean |
-| Logistic Regression (L2) | 88.50% | 88.48% | Learning Rate = 0.05 |
-| Random Forest | 85.69% | 85.66% | 15 Trees, Max Depth = 12 |
-
-### 🏆 Best Performing Configuration
-
-- **Model:** Tuned K-Nearest Neighbors
-- **Distance Metric:** Euclidean
-- **Number of Neighbors:** 5
-- **Test Accuracy:** **91.63%**
-- **Macro F1-Score:** **91.62%**
-
----
-
-# 📈 Evaluation & Visualization
-The project evaluates every trained model using standard classification metrics.
-### Evaluation Metrics
-- Accuracy
-- Precision
-- Recall
-- F1 Score
-- Macro F1 Score
-- Confusion Matrix
-
-
-### Generated Outputs
-The pipeline automatically generates:
-- Classification reports
-- Confusion matrices
-- Model comparison tables
-- Learning curves
-- Performance summaries
-- Prediction outputs
-
-All generated files are saved inside the `outputs/` directory
-
-## 📈 Key Findings
-
-- HOG features provided the strongest representation for binary classification.
-- Logistic Regression achieved the highest binary classification accuracy.
-- Hyperparameter tuning significantly improved KNN performance in the multiclass task.
-- PCA successfully reduced feature dimensionality while maintaining competitive performance.
-- The optimized implementation reduced execution time while preserving classification accuracy.
-
-# 🛠 Technologies
-
-- Python
 - NumPy
-- TensorFlow (MNIST Loader)
 - Matplotlib
-- Pandas
-
----
-
-# 📦 Dependencies
-
-- NumPy
 - TensorFlow
-- Matplotlib
-- Pandas
-- tqdm
+- Pillow
+- Streamlit
 
----
+## Running the Experiments
 
-# 🎓 Educational Value
+### Phase 1: full binary experiment
 
-This project demonstrates a complete end-to-end Machine Learning workflow:
+```bash
+python main.py --phase 1 --config phase1_config.json
+```
 
-- Data preprocessing
-- Feature engineering
-- Manual model implementation
-- Model evaluation
-- Hyperparameter tuning
-- Performance optimization
+### Phase 1: faster binary experiment
 
-The emphasis is on understanding the mathematics behind classical Machine Learning algorithms rather than relying on high-level libraries.
+```bash
+python main.py --phase 1 --config phase1_fast_config.json
+```
 
----
+### Phase 1: choose another digit pair
 
-# 🔧 Troubleshooting
+```bash
+python main.py --phase 1 --class-a 4 --class-b 9 --subsample-per-class 1000
+```
 
-| Problem | Solution |
-|---------|----------|
-| Slow training | Use the fast configuration files |
-| Memory usage is high | Reduce the number of PCA components |
-| Low accuracy | Increase training samples or iterations |
-| Import errors | Install all required packages from `requirements_demo.txt` |
-| TensorFlow dataset not loading | Verify TensorFlow installation |
+### Phase 2: fast multiclass experiment
 
-# 🙏 Acknowledgements
+```bash
+python main.py --phase 2 --config phase2_fast_config.json
+```
 
-- MNIST Dataset by Yann LeCun
-- TensorFlow/Keras for dataset loading
-- NumPy for numerical computations
-- Matplotlib for visualization
+### Phase 2: improved pipeline
 
-## 🌟 Key Advantages
+```bash
+python main.py --phase 2 --improved --config phase2_improved_config.json
+```
 
-### Comprehensive Learning Path
-- Progressive Complexity: Start with binary classification, advance to multiclass.
-- Multiple Algorithms: Compare different ML approaches (Phase 1).
-- Advanced Techniques: Regularization and bias-variance analysis (Phase 2).
-- Feature Engineering: Understand the impact of different feature representations.
+### Select an output directory
 
-### Interactive Development
-- Jupyter Notebooks: Execute code step-by-step with immediate feedback.
-- Rich Visualizations: See results, plots, and metrics inline.
-- Easy Experimentation: Modify parameters and re-run individual cells.
-- Professional Workflow: Industry-standard data science practices.
+```bash
+python main.py --phase 2 --improved --output-dir outputs/phase2_run
+```
 
-### Educational Value
-- From-Scratch Implementation: Understand algorithms at the fundamental level.
-- Regularization: Learn to prevent overfitting with L1/L2/ElasticNet.
-- Bias-Variance Tradeoff: Deep understanding of model behavior.
-- Hyperparameter Tuning: Systematic approach to model optimization.
-- Cross-Validation: Proper model evaluation and selection techniques.
-- Performance Analysis: Comprehensive evaluation with multiple metrics.
+## Running the Streamlit Demo
 
-### Real-World Relevance
-- Complete Pipeline: End-to-end ML project structure.
-- Multiple Feature Types: PCA, HOG, and raw features comparison.
-- Scalable Code: Modular design for easy extension.
-- Reproducible Results: Proper random seeding and documentation.
-- Statistical Rigor: Bootstrap-based analysis for robust conclusions.
+```bash
+streamlit run app.py
+```
 
----
+Streamlit will print a local address, normally:
 
-## 🔬 Advanced Topics Covered
+```text
+http://localhost:8501
+```
 
-### Regularization
-- **Purpose:** Prevent overfitting by penalizing complex models.  
-- **L1 (Lasso):** Encourages sparsity, useful for feature selection.  
-- **L2 (Ridge):** Smooth weight distribution, better generalization.  
-- **ElasticNet:** Combines benefits of L1 and L2.  
-- **Implementation:** Custom gradient computation with penalty terms.
+Open that address in a browser, choose a phase, feature representation, and model, then click **Train / Load model**.
 
-### Bias-Variance Tradeoff
-- **Bias:** Error from overly simplistic assumptions (underfitting).  
-- **Variance:** Error from sensitivity to training data (overfitting).  
-- **Decomposition:** Bootstrap sampling to separate bias and variance.  
-- **Analysis:** Visual comparison across different regularization methods.  
-- **Interpretation:** Guidelines for model selection and improvement.
+> [!TIP]
+> The demo intentionally uses smaller per-class subsets so a manual model can train interactively on a normal laptop.
 
-### Feature Engineering
-- **PCA:** Dimensionality reduction while preserving variance.  
-- **HOG:** Edge and gradient information for image classification.  
-- **Comparison:** Systematic evaluation of feature impact on performance.
+## Configuration Reference
 
+Experiment behavior is controlled through JSON configuration files and optional command-line overrides.
+
+| Configuration key | Purpose | Example |
+|---|---|---|
+| `phase` | Select binary or multiclass workflow | `1` or `2` |
+| `class_a` | First binary digit | `3` |
+| `class_b` | Second binary digit | `8` |
+| `features` | Feature pipelines to compare | `flatten`, `pca`, `hog` |
+| `models` | Models to evaluate | `logreg`, `knn`, `gnb` |
+| `pca_components` | Retained PCA dimensions | `50` |
+| `hog_cell_size` | HOG pixels per cell | `4` |
+| `hog_block_size` | HOG cells per block | `2` |
+| `hog_bins` | Orientation histogram bins | `9` |
+| `val_ratio` | Validation fraction | `0.10` |
+| `test_ratio` | Test fraction | `0.20` |
+| `subsample_per_class` | Maximum samples for each class | `1000` |
+| `balance_train` | Enable training-set balancing | `false` |
+| `random_state` | Reproducible random seed | `42` |
+| `rf_n_estimators` | Random Forest tree count | `15` |
+| `rf_max_depth` | Maximum tree depth | `12` |
+| `mnist_loader` | Dataset source | `tensorflow` or `idx` |
+| `data_dir` | Local dataset directory | `data` |
+| `output_dir` | Generated-result directory | `outputs` |
+
+Command-line arguments override matching values from the selected configuration file.
+
+## Recommended Experiment Order
+
+If you are exploring the project for the first time, use this sequence:
+
+1. Run the fast Phase 1 configuration.
+2. Compare Flatten, PCA, and HOG results.
+3. Change the binary digit pair and observe which combinations are harder.
+4. Run the Phase 2 fast configuration.
+5. Run the improved Phase 2 PCA pipeline.
+6. Launch Streamlit and test held-out samples.
+7. Upload your own handwritten digit and inspect its probabilities.
+
+## Adding Result Images
+
+For the strongest GitHub presentation, add generated figures or screenshots to `assets/` using names such as:
+
+```text
+assets/
+├── streamlit_demo.png
+├── binary_confusion_matrix.png
+├── multiclass_confusion_matrix.png
+├── feature_comparison.png
+└── sample_predictions.png
+```
+
+Then display them with standard Markdown:
+
+```markdown
+![Multiclass confusion matrix](assets/multiclass_confusion_matrix.png)
+```
+
+Or use centered HTML with a controlled width:
+
+```html
+<p align="center">
+  <img src="assets/streamlit_demo.png" alt="Streamlit demo" width="90%">
+</p>
+```
+
+## Limitations
+
+- Manual algorithms are slower than highly optimized production libraries.
+- Large KNN experiments can be expensive because prediction compares samples with the stored training set.
+- MNIST images are centered and standardized; real-world handwritten images may require stronger preprocessing.
+- A small Streamlit subset is appropriate for demonstration but does not represent full-dataset training.
+- Reduced search spaces prioritize practical runtime over exhaustive hyperparameter optimization.
+- Classical models may not match modern convolutional neural networks on full MNIST accuracy.
+- Results on MNIST should not be assumed to transfer directly to unrelated image-classification tasks.
+
+## Future Improvements
+
+- Add probability calibration and confidence analysis.
+- Add learning curves and runtime benchmarks.
+- Add automated unit tests for every model and transformation.
+- Save and reload fitted manual models.
+- Add drag-and-draw digit input using an HTML canvas.
+- Add model explanations and nearest-neighbor visualization.
+- Compare manual implementations with equivalent scikit-learn baselines.
+- Add convolutional neural-network results as a modern benchmark.
+- Add experiment tracking and reproducible result summaries.
+- Containerize the Streamlit demo with Docker.
+- Deploy the interface to a public cloud platform.
+
+## Educational Takeaways
+
+Completing this project demonstrates practical understanding of:
+
+- Binary and multiclass classification.
+- Gradient-based optimization.
+- Distance-based learning.
+- Probabilistic classification.
+- Tree-based learning and bagging.
+- Feature scaling and data preprocessing.
+- Dimensionality reduction.
+- Gradient-based image descriptors.
+- Hyperparameter selection.
+- Cross-validation and test-set evaluation.
+- Vectorization and runtime optimization.
+- Modular ML software design.
+- Interactive model deployment.
+
+## Disclaimer
+
+This repository is an educational machine-learning implementation. It is not intended as a production optical-character-recognition system, and reported performance should always be interpreted alongside the selected dataset size, feature representation, configuration, and random seed.
 
 ---
 
 <div align="center">
+
+### Built to understand machine learning—not only to call it.
+
+If this repository helped you learn, consider giving it a ⭐
 
 </div>
