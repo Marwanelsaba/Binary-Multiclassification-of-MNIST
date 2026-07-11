@@ -608,11 +608,7 @@ Completing this project demonstrates practical understanding of:
 - Modular ML software design.
 - Interactive model deployment.
 
-## Disclaimer
 
-This repository is an educational machine-learning implementation. It is not intended as a production optical-character-recognition system, and reported performance should always be interpreted alongside the selected dataset size, feature representation, configuration, and random seed.
-
----
 
 <div align="center">
 
