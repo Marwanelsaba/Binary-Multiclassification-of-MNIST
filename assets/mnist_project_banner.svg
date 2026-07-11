@@ -1,0 +1,67 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1400" height="460" viewBox="0 0 1400 460" role="img" aria-labelledby="title desc">
+  <title id="title">Binary and Multiclass MNIST Classification</title>
+  <desc id="desc">A dark machine-learning project banner showing handwritten digit tiles and the project title.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#081426"/>
+      <stop offset="0.52" stop-color="#142a4a"/>
+      <stop offset="1" stop-color="#24164d"/>
+    </linearGradient>
+    <linearGradient id="accent" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#36d1dc"/>
+      <stop offset="1" stop-color="#8b5cf6"/>
+    </linearGradient>
+    <filter id="glow" x="-30%" y="-30%" width="160%" height="160%">
+      <feGaussianBlur stdDeviation="7" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <pattern id="grid" width="34" height="34" patternUnits="userSpaceOnUse">
+      <path d="M 34 0 L 0 0 0 34" fill="none" stroke="#8ab4f8" stroke-opacity="0.08" stroke-width="1"/>
+    </pattern>
+  </defs>
+
+  <rect width="1400" height="460" rx="28" fill="url(#bg)"/>
+  <rect width="1400" height="460" rx="28" fill="url(#grid)"/>
+  <circle cx="1210" cy="80" r="180" fill="#6d28d9" opacity="0.12"/>
+  <circle cx="1120" cy="410" r="230" fill="#0891b2" opacity="0.10"/>
+
+  <g transform="translate(72 76)">
+    <rect x="0" y="0" width="82" height="82" rx="16" fill="#101827" stroke="#38bdf8" stroke-opacity="0.55"/>
+    <rect x="96" y="0" width="82" height="82" rx="16" fill="#101827" stroke="#a78bfa" stroke-opacity="0.55"/>
+    <rect x="192" y="0" width="82" height="82" rx="16" fill="#101827" stroke="#38bdf8" stroke-opacity="0.55"/>
+    <rect x="0" y="96" width="82" height="82" rx="16" fill="#101827" stroke="#a78bfa" stroke-opacity="0.55"/>
+    <rect x="96" y="96" width="82" height="82" rx="16" fill="#101827" stroke="#38bdf8" stroke-opacity="0.55"/>
+    <rect x="192" y="96" width="82" height="82" rx="16" fill="#101827" stroke="#a78bfa" stroke-opacity="0.55"/>
+    <rect x="0" y="192" width="82" height="82" rx="16" fill="#101827" stroke="#38bdf8" stroke-opacity="0.55"/>
+    <rect x="96" y="192" width="82" height="82" rx="16" fill="#101827" stroke="#a78bfa" stroke-opacity="0.55"/>
+    <rect x="192" y="192" width="82" height="82" rx="16" fill="#101827" stroke="#38bdf8" stroke-opacity="0.55"/>
+    <text x="41" y="59" fill="#f8fafc" font-size="52" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(-7 41 41)">3</text>
+    <text x="137" y="60" fill="#f8fafc" font-size="52" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(5 137 41)">8</text>
+    <text x="233" y="59" fill="#f8fafc" font-size="49" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(-3 233 41)">0</text>
+    <text x="41" y="156" fill="#f8fafc" font-size="51" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(4 41 137)">2</text>
+    <text x="137" y="157" fill="#f8fafc" font-size="52" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(-5 137 137)">4</text>
+    <text x="233" y="156" fill="#f8fafc" font-size="51" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(6 233 137)">6</text>
+    <text x="41" y="252" fill="#f8fafc" font-size="52" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(-4 41 233)">7</text>
+    <text x="137" y="252" fill="#f8fafc" font-size="52" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(3 137 233)">9</text>
+    <text x="233" y="252" fill="#f8fafc" font-size="50" font-family="Comic Sans MS, Segoe Print, cursive" text-anchor="middle" transform="rotate(-6 233 233)">5</text>
+  </g>
+
+  <g transform="translate(420 92)">
+    <rect x="0" y="0" width="142" height="34" rx="17" fill="url(#accent)" opacity="0.95"/>
+    <text x="71" y="23" fill="#07111f" font-size="14" font-weight="750" font-family="Segoe UI, Arial, sans-serif" text-anchor="middle">FROM SCRATCH</text>
+    <text x="0" y="104" fill="#f8fafc" font-size="58" font-weight="750" font-family="Segoe UI, Arial, sans-serif">Binary &amp; Multiclass</text>
+    <text x="0" y="172" fill="url(#accent)" font-size="64" font-weight="800" font-family="Segoe UI, Arial, sans-serif" filter="url(#glow)">MNIST Classification</text>
+    <text x="2" y="224" fill="#cbd5e1" font-size="23" font-family="Segoe UI, Arial, sans-serif">Classical machine learning, feature engineering, evaluation, and deployment</text>
+
+    <g transform="translate(0 266)" font-family="Segoe UI, Arial, sans-serif" font-size="16" font-weight="650">
+      <rect x="0" y="0" width="128" height="40" rx="20" fill="#0f2940" stroke="#38bdf8" stroke-opacity="0.65"/>
+      <text x="64" y="26" fill="#7dd3fc" text-anchor="middle">NumPy</text>
+      <rect x="142" y="0" width="128" height="40" rx="20" fill="#251c49" stroke="#a78bfa" stroke-opacity="0.65"/>
+      <text x="206" y="26" fill="#c4b5fd" text-anchor="middle">PCA + HOG</text>
+      <rect x="284" y="0" width="144" height="40" rx="20" fill="#0f2940" stroke="#38bdf8" stroke-opacity="0.65"/>
+      <text x="356" y="26" fill="#7dd3fc" text-anchor="middle">Manual Models</text>
+      <rect x="442" y="0" width="138" height="40" rx="20" fill="#251c49" stroke="#a78bfa" stroke-opacity="0.65"/>
+      <text x="511" y="26" fill="#c4b5fd" text-anchor="middle">Streamlit</text>
+    </g>
+  </g>
+</svg>
