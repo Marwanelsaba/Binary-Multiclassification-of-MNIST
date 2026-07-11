@@ -616,8 +616,4 @@ This repository is an educational machine-learning implementation. It is not int
 
 <div align="center">
 
-### Built to understand machine learning—not only to call it.
-
-If this repository helped you learn, consider giving it a ⭐
-
 </div>
